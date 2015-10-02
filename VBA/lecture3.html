@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>VBA - Основы</title>
+
+        <meta name="description" content="Презентация об основах программировании на VBA">
+        <meta name="author" content="Бобылева Галина Васильевна">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/serif.css" id="theme">
+
+        <!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/css/theme/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+				link.href = '../reveal.js/css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal center">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides stack">
+				<section>
+					<h1>Visual Basic for Applications</h1>
+					<h3>Основы программирования</h3>
+					<p>
+						<small>Created by Бобылева Галина Васильевна / кафедра 74</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Переменные и функции</h2>
+				</section>
+
+                <section>
+                    <h3>Переменные</h3><br/>
+                        <p class="fragment" data-fragment-index="0">Инициализация переменной</p>
+                        <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+Dim numberOfStudents As Integer
+                        </code></pre>
+                        <p class="fragment" data-fragment-index="1">Инициализация указателя</p>
+                        <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+Dim bottomLabel As New System.Windows.Forms.Label
+                        </code></pre>
+                        <p class="fragment" data-fragment-index="2">Инициализация переменной со значением</p>
+                        <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+Dim num1 As Integer = 3
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+Dim student1 As New Student With {.First = "Michael",
+                                  .Last = "Tucker"}
+                        </code></pre>
+                        <p class="fragment" data-fragment-index="3">Множественная инициализация переменных</p>
+                        <pre class="fragment" data-fragment-index="3"><code data-trim contenteditable>
+Dim a, b, c As Single, x, y As Double, i As Integer
+                        </code></pre>
+
+				</section>
+
+                <section>
+                <section>
+                    <h2>Массивы</h2>
+				</section>
+				<section>
+                <h3>Массив</h3>
+                     <p class="fragment">
+                          &ndash; это коллекция переменных, которые имеют общее имя.
+                     </p>
+				</section>
+				<section>
+                <h3>Размерность массива</h3><br/><br/>
+                    <ul>
+                        <li class="fragment"><em>одномерные массивы</em></li>
+                        <li class="fragment"><em>многомерные массивы</em></li>
+                        <ul class="fragment">
+                            <li><em>двумерный массив</em></li>
+                            <li><em>трехмерный массив</em></li>
+                            <li><em>...</em></li>
+                        </ul>
+                    </ul>
+				</section>
+				<section>
+                <img src="img/array.png"> <br/><br/>
+                <pre class="fragment"><code data-trim contenteditable>
+                    Dim students(6) As Integer
+                </code></pre>
+				</section>
+				<section>
+                        <p class="fragment" data-fragment-index="0">Декларирование статического массива</p>
+                        <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+Dim cargoWeights(10) As Double
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+Dim cargoWeights(1 To 10) As Double
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+cargoWeights = New Double(10) {}
+                        </code></pre><br/>
+                        <p class="fragment" data-fragment-index="1">Декларирование динамического массива.</p>
+                        <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+Dim cargoWeights As Double()
+ReDim cargoWeights(15)
+                        </code></pre>
+                        <small class="fragment" data-fragment-index="1"><code> ReDim </code> перевыделяет место для значений массива </small><br/>
+                        <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+ReDim Preserve cargoWeights(25)
+                        </code></pre>
+                        <small class="fragment" data-fragment-index="2"><code> Preserve </code> сохраняет значения в массиве </small><br/>
+
+				</section>
+				<section>
+<pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+    Dim numbers = {{1, 2}, {3, 4}, {5, 6}}
+</code></pre>
+
+<pre class="fragment" data-fragment-index="3"><code data-trim contenteditable>
+    For index0 = 0 To numbers.GetUpperBound(0)
+</code></pre>
+    <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+        For index1 = 0 To numbers.GetUpperBound(1)
+            Debug.Write(numbers(index0, index1).ToString & " ")
+Next
+    </code></pre>
+    <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+        Debug.WriteLine("")
+    </code></pre>
+<pre class="fragment" data-fragment-index="3"><code data-trim contenteditable>
+Next
+</code></pre>
+<pre class="fragment" data-fragment-index="4"><code data-trim contenteditable>
+' Output
+'  1 2
+'  3 4
+'  5 6
+</code></pre>
+                    <small class="fragment" data-fragment-index="1"><code> GetUpperBound(Int) </code> возвращает последний индекс в массиве по размерности. </small><br/>
+				</section>
+				</section>
+
+                <section>
+                    <h3>Функции и подпрограммы</h3><br/>
+                        <p class="fragment" data-fragment-index="0">Подпрограмма</p>
+                        <pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim contenteditable>
+Sub computeArea(ByVal length As Double, ByVal width As Double)
+    Dim area As Double
+    If length = 0 Or width = 0 Then
+        Exit Sub
+    End If
+    area = length * width
+    Debug.WriteLine(area)
+End Sub
+                        </code></pre>
+                        <p class="fragment" data-fragment-index="2">Функция</p>
+                        <pre class="fragment" data-fragment-index="2"><code class="vbscript" data-trim contenteditable>
+Function myFunction(ByVal j As Integer) As Double
+    Return 3.87 * j
+End Function
+                        </code></pre>
+				</section>
+
+                <section>
+                    <h3>Параметры функции</h3><br/>
+                        <p class="fragment" data-fragment-index="0">Необязательные параметры</p>
+                        <pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim contenteditable>
+Sub name(Optional ByVal parameter1 As datatype1 = defaultvalue)
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim contenteditable>
+MsgBox("Just display this message.")
+MsgBox("Test message", , "Title bar text")
+                        </code></pre><br/>
+                        <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+                            MsgBox(prompt[, buttons] [, title] [, helpfile, context])
+                        </code></pre>
+
+                        <p class="fragment" data-fragment-index="3">Поименованные параметры</p>
+                        <pre class="fragment" data-fragment-index="3"><code class="vbscript" data-trim contenteditable>
+MsgBox(Title:="Title bar text", Prompt:="Test message")
+                        </code></pre>
+				</section>
+
+                <section>
+                    <h3>Механизмы передачи параметров функции</h3><br/>
+                        <p class="fragment" data-fragment-index="0">ByRef</p>
+                        <pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim contenteditable>
+Sub howMany(ByVal ch As Char, ByVal st As String, ByRef counter As Integer)
+End Function
+Dim howManyA As Integer
+howMany("a"c, "How many a's in this string?", howManyA)
+                        </code></pre><br/>
+                        <p class="fragment" data-fragment-index="1">ByVal</p>
+                        <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim contenteditable>
+Function howMany(ByVal ch As Char, ByVal st As String) As Integer
+End Function
+Dim howManyA As Integer = howMany("a"c, "How many a's in this string?")
+                        </code></pre>
+				</section>
+
+                <section>
+                    <h3>Области видимости</h3><br/>
+                        <pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim contenteditable>
+Public Function calcSum(ByVal ParamArray args() As Double) As Double
+    calcSum = 0
+    If args.Length <= 0 Then Exit Function
+    For i As Integer = 0 To args.GetUpperBound(0)
+        calcSum += args(i)
+    Next i
+End Function
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim contenteditable>
+Private salary As Decimal
+                        </code></pre>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1"><code class="vbscript">Public</code></li>
+                        <li class="fragment" data-fragment-index="3"><code class="vbscript">Friend</code></li>
+                        <li class="fragment" data-fragment-index="4"><code class="vbscript">Private</code></li>
+                        </ul>
+				</section>
+                <section>
+<pre><code data-trim contenteditable=>
+    Function factorial(ByVal n As Integer) As Integer
+        If n <= 1 Then
+            Return 1
+        Else
+            Return factorial(n - 1) * n
+        End If
+    End Function
+</code></pre>
+                </section>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				history: true,
+				center: true,
+                touch: true,
+                slideNumber: true,
+
+				theme: 'serif', // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+                math: {
+                            mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+                                    },
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '../reveal.js/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              jax: ["input/TeX","output/SVG"]
+            });
+        </script>
+
+	</body>
+</html>
