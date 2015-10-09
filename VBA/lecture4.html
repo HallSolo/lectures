@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>VBA - Основы</title>
+
+    <meta name="description" content="Презентация об основах программировании на VBA">
+    <meta name="author" content="Бобылева Галина Васильевна">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/serif.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../reveal.js/css/theme/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal center">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides stack">
+	<section>
+	  <h1>Visual Basic for Applications</h1>
+	  <h3>Основы программирования</h3>
+	  <p>
+	    <small>Created by Бобылева Галина Васильевна / кафедра 74</small>
+	  </p>
+	</section>
+
+	<section>
+	  <h2>Основы объектно-ориентированного программирования</h2>
+	</section>
+
+	<section>
+
+	  <section>
+	    
+	    <div class="fragment" data-fragment-index="0">
+	      <strong>Класс</strong><br/><br/>
+	      &mdash; блок функциональности, которые можно использовать в программах.
+	    </div>
+	    <br/><br/><br/><br/>
+	    <div class="fragment" data-fragment-index="1">
+	      <strong>Объект</strong><br/><br/>
+	      &mdash; экземпляр конкретного класса.
+	    </div>
+	  </section>
+
+	  <section>
+	    <h3>Создание объектов</h3><br/><br/>
+	    
+	    <div class="fragment" data-fragment-index="0">
+	      <strong>Позднее связывание</strong>
+	      <pre><code data-trim contenteditable>
+		  Dim oApp As Object
+		  Set oApp = CreateObject("Word.Application")
+		  MsgBox oApp.UserName
+	      </code></pre>
+	    </div><br/><br/>
+
+	    <div class="fragment" data-fragment-index="1">
+	      <strong>Ранее связывание</strong>
+	      <pre><code data-trim contenteditable>
+		  Dim oApp As Object
+		  MsgBox oApp.UserName
+	      </code></pre>
+	    </div>
+	  </section>
+
+	  <section>
+	    <h3>Удаление объектов</h3><br/><br/><br/>
+	    <pre><code data-trim contenteditable>
+		Set oDoc = Nothing
+	    </code></pre>
+	  </section>
+
+	  <section>
+	    <h3>Методы объекта</h3><br/><br/>
+	    &mdash; именованный набор действий, которые может выполнять данный объект.
+		<br/> <br/>
+		<div class="fragment" data-fragment-index="0">
+	  <strong>Варианты вызова методов:</strong>
+	      <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+		  oDoc.Activate
+	      </code></pre>
+	      <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+		  oDoc.SaveAs "C:\doc12.doc"
+	      </code></pre>
+	      <pre class="fragment" data-fragment-index="3"><code data-trim contenteditable>
+Dim nCent
+nCent = oApp.CentimetersToPoints(10)
+MsgBox nCent
+	      </code></pre>
+		  </div>
+	  </section>
+
+	  <section>
+	    <h3>Свойства объекта</h3><br/><br/>
+	    &mdash; это информация, которая хранится в этом объекте и к которой можно получить доступ.
+		<br/> <br/>
+	    <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+		oApp.ActivePrinter = "HP LaserJet 4"
+	    </code></pre>
+	  </section>
+
+	  <section>
+	    <h3>События объекта</h3><br/><br/>
+	    &mdash; это действие, распозноваемое объектом, для которого можно запрограммировать реакцию.
+		<br /><br/>
+	    <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+		Public WithEvents App As Word.Application
+	    </code></pre>
+
+	  </section>
+	</section>
+
+
+
+		
+	<section>
+	  <section>
+		<h3>Range</h3>
+		&mdash; набор ячеек.
+		<br/><br/>
+		<div class="fragment" data-fragment-index="0">
+		<strong>Инициализация c 1 ячейкой:</strong>
+		<pre><code data-trim contenteditable>
+Dim oRange As Range
+Set oRange = Worksheets("Лист1").Range("A1")
+		</code></pre>
+		</div>
+		<br/><br/>
+		<div class="fragment" data-fragment-index="1">
+		<strong>Инициализация с диапозоном:</strong>
+		<pre><code data-trim contenteditable>
+Dim oRange As Range
+Set oRange = Worksheets("Лист1").Range("A1:D10")
+		</code></pre>
+		</div>
+	  </section>
+
+	  <section>
+		<h3>Свойства объекта Range</h3>
+		<ul>
+		  <div class="fragment" data-fragment-index="0">
+			<li><code>Width()</code></li>
+			<small>&mdash; ширина ячеек.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="1">
+			<li><code>Height()</code></li>
+			<small>&mdash; высота ячеек.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="2">
+			<li><code>Font()</code></li>
+			<small>&mdash; шрифт в ячейках.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="3">
+			<li><code>Formula</code></li>
+			<small>&mdash; формула вычисления значения ячеек.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="4">
+			<li><code>Borders</code></li>
+			<small>&mdash; ссылка на границу набора ячеек.</small>
+		  </div>
+		</ul>
+	  </section>
+	  
+	  <section>
+		  <h3>Методы объекта Range</h3>
+		  <ul>
+			  <div class="fragment" data-fragment-index="0">
+			  <li><code>Cut()</code></li>
+			  <small>&mdash; вырезать содержание ячеек.</small>
+			  </div>
+			  <div class="fragment" data-fragment-index="1">
+			  <li><code>Delete()</code></li>
+			  <small>&mdash; удаление данных из ячеек диапозона.</small>
+			  </div>
+			  <div class="fragment" data-fragment-index="2">
+			  <li><code>Clear()</code></li>
+			  <small>&mdash; очистить ячейки диапозона.</small>
+			  </div>
+			  <div class="fragment" data-fragment-index="3">
+			  <li><code>Merge()</code></li>
+			  <small>&mdash; объединение всех ячеек в одну.</small>
+			  </div>
+			  <div class="fragment" data-fragment-index="4">
+			  <li><code>UnMerge()</code></li>
+			  <small>&mdash; обратная операция.</small>
+			  </div>
+			  <div class="fragment" data-fragment-index="5">
+			  <li><code>Sort()</code></li>
+			  <small>&mdash; сортировать содержание ячеек.</small>
+			  </div>
+		  </ul>		  
+	  </section>
+
+	  <section>
+		<h3>Пример использования</h3>
+		<br/> <br/>
+		<pre><code data-trim contenteditable>
+Sub main()
+
+   Dim MyRange As Range
+   Dim myBorder As Borders
+
+   Set MyRange = Range("B2:C3")
+   Set myBorder = MyRange.Borders
+
+   myBorder.Color = vbRed
+
+End Sub
+		  </code></pre>
+	  </section>
+	</section>
+
+	<section>
+	  <section>
+		<h3>Worksheets</h3>
+		&mdash; лист рабочей книги Excel.
+		<br/>
+		<br/>
+		<strong>Инициализация с добавлением:</strong>
+		<pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+Dim oSheet As Excel.Worksheet
+Set oSheet = Worksheets.Add()
+		</code></pre>
+	  </section>
+
+	  <section>
+		<h3>Свойства объекта Worksheet</h3>
+		<ul>
+		  <div class="fragment" data-fragment-index="0">
+			<li><code>Next</code></li>
+			<small>&mdash; ссылка на следующий лист.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="1">
+			<li><code>Previous</code></li>
+			<small>&mdash; ссылка на предыдущий лист.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="2">
+			<li><code>Name</code></li>
+			<small>&mdash; наименование листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="3">
+			<li><code>Type</code></li>
+			<small>&mdash; тип данного листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="4">
+			<li><code>Visible</code></li>
+			<small>&mdash; скрытость от глаз пользователя.</small>
+		  </div>
+		</ul>
+	  </section>
+
+
+	  <section>
+		<h3>Методы объекта Worksheet</h3>
+		<ul>
+		  <div class="fragment" data-fragment-index="0">
+			<li><code>Copy()</code></li>
+			<small>&mdash; копирование листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="1">
+			<li><code>Delete()</code></li>
+			<small>&mdash; удаление листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="2">
+			<li><code>Move()</code></li>
+			<small>&mdash; перемещение листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="3">
+			<li><code>Calculate()</code></li>
+			<small>&mdash; перевычисление листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="4">
+			<li><code>SaveAs()</code></li>
+			<small>&mdash; сохранение листа в файл.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="5">
+			<li><code>Protect()</code></li>
+			<small>&mdash; защита листа от изменений.</small>
+		  </div>
+		</ul>		  
+	  </section>
+
+	  <section>
+		<h3>Пример использования</h3>
+		<br/> <br/>
+		<pre><code data-trim contenteditable>
+Sub main()
+
+    Dim oWorksheets As Worksheet
+    Dim strPassword As String 
+
+    Set oWorksheets = Worksheets("Лист1")
+
+    strPassword = InputBox ("Введите пароль:") 
+    oWorksheets.Protect password:=strPassword, scenarios:=True
+
+End Sub
+		</code></pre>
+	  </section>
+	  
+	  <section>
+		<h3>События объекта Worksheet</h3>
+		<br/> <br/>
+		<ul>
+		  <div class="fragment" data-fragment-index="0">
+			<li><code>Activate</code></li>
+			<small>&mdash; активирование листа.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="1">
+			<li><code>Change</code></li>
+			<small>&mdash; изменение на листе.</small>
+		  </div>
+		  <div class="fragment" data-fragment-index="3">
+			<li><code>Calculate</code></li>
+			<small>&mdash; вычисление листе.</small>
+		  </div>
+		</ul>		  
+	  </section>
+	  
+	  <section>
+		<h3>Пример использования</h3>
+		<br/> <br/>
+		<pre><code data-trim contenteditable>
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+        If Target.Column = 1 Then
+        ThisRow = Target.Row
+        If Target.Value > 100 Then
+            Range("B" & ThisRow).Interior.ColorIndex = 3
+        Else
+            Range("B" & ThisRow).Interior.ColorIndex = xlColorIndexNone
+        End If
+    End If
+End Sub
+
+		</code></pre>
+	  </section>
+	</section>
+
+
+	
+	
+	<script src="../reveal.js/lib/js/head.min.js"></script>
+	<script src="../reveal.js/js/reveal.js"></script>
+
+	<script>
+
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  history: true,
+	  center: true,
+          touch: true,
+          slideNumber: true,
+
+	  theme: 'serif', // available themes are in /css/theme
+	  transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+          math: {
+          mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+          },
+
+	  // Parallax scrolling
+	  // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+	  // parallaxBackgroundSize: '2100px 900px',
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../reveal.js/plugin/math/math.js', async: true }
+	  ]
+	  });
+
+	</script>
+
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          jax: ["input/TeX","output/SVG"]
+          });
+        </script>
+
+  </body>
+</html>
