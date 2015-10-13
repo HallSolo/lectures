@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>VBA - Основы</title>
+
+		<meta name="description" content="Презентация об основах программировании на VBA">
+		<meta name="author" content="Бобылева Галина Васильевна">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/serif.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/css/theme/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal center">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides stack">
+				<section>
+					<h1>Visual Basic for Applications</h1>
+					<h3>Основы программирования</h3>
+					<p>
+						<small>Created by Бобылева Галина Васильевна / кафедра 74</small>
+					</p>
+				</section>
+
+				<section>
+				<section>
+					<h2>Операции сравнения</h2>
+                </section>
+				<section>
+					<h3>Обозначения операций сравнения</h3><br/>
+                        <center>
+                        <table width="80%">
+                            <colgroup>
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 30%;">
+                                <col span="1" style="width: 50%;">
+                            </colgroup>
+                            <tr class="fragment">
+                                <td><code> =  </code></td>
+                                <td><code> E1 = E2 </code></td>
+                                <td> Равно. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> <  </code></td>
+                                <td><code> E1 < E2 </code></td>
+                                <td> Меньше, чем. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> <=  </code></td>
+                                <td><code> E1 <= E2  </code></td>
+                                <td> Меньше или равно. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> > </code></td>
+                                <td><code> E1 > E2  </code></td>
+                                <td> Больше, чем. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> >= </code></td>
+                                <td><code> E1 >= E2 </code></td>
+                                <td> Больше или равно. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> <>  </code></td>
+                                <td><code> E1 <> E2  </code></td>
+                                <td> Не равно. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> Is </code></td>
+                                <td><code> E1 Is E2  </code></td>
+                                <td> Идентичность. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> Like  </code></td>
+                                <td><code> E1 Like E2 </code></td>
+                                <td> Подобие. </td>
+                            </tr>
+                            </table>
+                        </center>
+				</section>
+                    <section>
+                        <h3>Символы совпадения с образцом</h3><br/>
+                        <center>
+                        <table width="80%">
+                            <colgroup>
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 80%;">
+                            </colgroup>
+                            <tr class="fragment">
+                                <td><code> # </code></td>
+                                <td> Любая одиночная цифра от 0 до 9. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> * </code></td>
+                                <td> Любое количество символов в любой комбинации. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> ? </code></td>
+                                <td> Любой одиночный символ. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> [list] </code></td>
+                                <td> Совпадение с любым одиночным символом из списка. </td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><code> [!list] </code></td>
+                                <td> Совпадение с любым одиночным символом, не имеющемся в списке. </td>
+                            </tr>
+                            </table>
+                        </center>
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>Управляющие операторы</h2>
+                    </section>
+
+                    <section>
+                        <h3>Условный оператор</h3>
+                        <div><strong>If...Then...Else</strong></div>
+                            <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+    Dim count As Integer = 0
+    Dim message As String
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+    If count = 0 Then
+        message = "There are no items."
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="3"><code data-trim contenteditable>
+    ElseIf count = 1 Then
+        message = "There is 1 item."
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+    Else
+        message = "There are " & count & " items."
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+    End If
+                            </code></pre>
+                    </section>
+                    <section>
+                        <h3>Блок-схема</h3>
+                        <img src="img/lecture2_ifelse.png">
+                    </section>
+
+                    <section>
+                        <h3>Условный оператор</h3>
+                        <div><strong>Select...Case</strong></div>
+                            <pre class="fragment" data-fragment-index="0"><code data-trim contenteditable>
+    Dim number As Integer = 8
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+    Select Case number
+        Case 1 To 5
+            Debug.WriteLine("Between 1 and 5, inclusive")
+                            </code></pre>
+                            <small class="fragment" data-fragment-index="1">Проверочное выражение должно принадлежать простому типу данных</small><br/>
+                            <small class="fragment" data-fragment-index="1">Список выражений может состоять:<br/>
+                            <ul>
+                                <li>выражений</li>
+                                <li>диапазона выражений <code>1 To 5</code></li>
+                                <li>выражением сравнения <code>Is > 5</code></li>
+                            </ul></small>
+                            <pre class="fragment" data-fragment-index="2"><code data-trim contenteditable>
+    Case 6, 7, 8
+            Debug.WriteLine("Between 6 and 8, inclusive")
+    Case 9 To 10
+            Debug.WriteLine("Equal to 9 or 10")
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="3"><code class="vbscript" data-trim contenteditable>
+    Case Else
+            Debug.WriteLine("Not between 1 and 10, inclusive")
+                            </code></pre>
+                            <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+    End Select
+                            </code></pre>
+                    </section>
+                    <section>
+                            <h3>Блок-схема</h3>
+                            <img src="img/lecture2_case.png">
+                    </section>
+                </section>
+
+				<section>
+                    <section>
+                        <h2>Циклы</h2>
+                    </section>
+                    <section>
+                        <h3>Do...Loop</h3>
+                            <p class="fragment" data-fragment-index="1">Условие продолжения цикла &mdash; логическое выражение</p>
+                            <small class="fragment" data-fragment-index="1"><code> Nothing </code> эквивалентно <code> False </code></small><br/>
+                            <center>
+                        <table width="80%">
+                                <colgroup>
+                                    <col span="1" style="width: 50%;">
+                                    <col span="1" style="width: 50%;">
+                                <colgroup>
+                            <tr>
+                                <td colspan="2"><pre class="fragment" data-fragment-index="0"><code class="vbscript" data-trim> Dim index As Integer = 0</code></pre> </td>
+                            </tr>
+                            <tr>
+                                <td><pre class="fragment" data-fragment-index="3"><code class="vbscript" data-trim> Do</code></pre> </td>
+                                <td><pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim> Do While index <= 10</code></pre> </td>
+                            </tr>
+                            <tr>
+                                <td colspan=2>
+                                    <pre class="fragment" data-fragment-index="2"><code class="vbscript" data-trim>
+    Debug.Write(index.ToString & " ")
+    index += 1
+                                    </code></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim> Loop Until index > 10</code></pre> </td>
+                                <td><pre class="fragment" data-fragment-index="3"><code class="vbscript" data-trim> Loop </code></pre></td>
+                            </tr>
+                            <tr>
+                                <td colspan=2>
+                                    <pre class="fragment" data-fragment-index="4"><code class="vbscript" data-trim>
+    Debug.WriteLine("")
+    ' Output: 0 1 2 3 4 5 6 7 8 9 10
+                                    </code></pre>
+                                </td>
+                            </tr>
+                        </table>
+                            </center>
+                    </section>
+
+                    <section>
+                        <h3>For...Next</h3>
+                                    <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim>
+    For index As Integer = 1 To 5
+        Debug.Write(index.ToString & " ")
+    Next
+    Debug.WriteLine("")
+    ' Output: 1 2 3 4 5
+                                    </code></pre><br/>
+                            <p class="fragment" data-fragment-index="2">Цикл с определенным шагом</p>
+                                    <pre class="fragment" data-fragment-index="2"><code class="vbscript" data-trim>
+    For number As Double = 2 To 0 Step -0.25
+        Debug.Write(number.ToString & " ")
+        Next
+        Debug.WriteLine("")
+        ' Output: 2 1.75 1.5 1.25 1 0.75 0.5 0.25 0
+                                    </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Управление циклом</h3>
+                                    <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim>
+    For index As Integer = 1 To 100000
+                                    </code></pre>
+                                    <pre class="fragment" data-fragment-index="3"><code class="vbscript" data-trim>
+    ' If index is between 5 and 7, continue
+    ' with the next iteration.
+    If index >= 5 And index <= 8 Then
+        Continue For
+    End If
+                                    </code></pre>
+                                    <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim>
+    ' Display the index.
+    Debug.Write(index.ToString & " ")
+                                    </code></pre>
+                                    <pre class="fragment" data-fragment-index="4"><code class="vbscript" data-trim>
+    ' If index is 10, exit the loop.
+    If index = 10 Then
+        Exit For
+    End If
+                                    </code></pre>
+                                    <pre class="fragment" data-fragment-index="1"><code class="vbscript" data-trim>
+    Next
+                                    </code></pre>
+                                    <pre class="fragment" data-fragment-index="5"><code class="vbscript" data-trim>
+    Debug.WriteLine("")
+    ' Output: 1 2 3 4 9 10
+                                    </code></pre>
+                    </section>
+				</section>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				history: true,
+				center: true,
+                touch: true,
+                slideNumber: true,
+
+				theme: 'serif', // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+                math: {
+                            mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+                                    },
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '../reveal.js/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              jax: ["input/TeX","output/SVG"]
+            });
+        </script>
+
+	</body>
+</html>
